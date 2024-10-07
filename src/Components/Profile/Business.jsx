@@ -3,24 +3,31 @@ import React, { useState } from 'react'
 export default function Business() {
 
   // contains the imagebb url that came after uploading in the fetch promise
-  const [foodImage, setFoodImage] = useState()
+  const [foodImage, setFoodImage] = useState(null)
   // contains the image data that the user has selected from his pc to send back in the image bb
-  const [imageData, setImageData] = useState()
+  const [imageData, setImageData] = useState(null)
+  // for url image update
+  const [imageUrl, setImageUrl] = useState(null)
+  // for managing food type
+  const [foodType,setFoodType] = useState('Fast Food')
 
-  const handleSubmitFood =async (event) => {
+  const handleSubmitFood = async (event) => {
 
     event.preventDefault()
 
     // for uploading image to imagebb using api
-    await fetch(`https://api.imgbb.com/1/upload?key=b590afab33d9f99a8d478e69992a0703`, {
-      method: 'POST',
-      body: imageData
+    if (imageData != null) {
+      await fetch(`https://api.imgbb.com/1/upload?key=b590afab33d9f99a8d478e69992a0703`, {
+        method: 'POST',
+        body: imageData
 
-    })
-      .then(res => res.json())
-      .then(data => {
-        setFoodImage(data.data.url)
       })
+        .then(res => res.json())
+        .then(data => {
+          setFoodImage(data.data.url)
+          console.log(data.data.url)
+        })
+    }
 
 
 
@@ -28,24 +35,29 @@ export default function Business() {
     const foodName = form.name.value
     const foodPrice = form.price.value
     const foodDescription = form.description.value
+    const url = form.url.value
+    let imageUrl = null
+    { imageData ? imageUrl = foodImage : imageUrl = url }
 
+    const type=foodType
     const foodData = {
-      foodName, foodPrice, foodDescription, foodImage
+      foodName, foodPrice, foodDescription, imageUrl,type
     }
-
     // for uploading data to backend server
-      fetch('http://localhost:5000/addfood', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(foodData),
+    await fetch('http://localhost:5000/addfood', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(foodData),
     })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            setFoodImage(null)
-        })
+      .then(res => res.json())
+      .then(data => {
 
-        console.log(foodData)
+        setFoodImage(null)
+      })
+
+   
+    form.reset()
+
   }
 
   // to get the image url from the computer
@@ -58,6 +70,11 @@ export default function Business() {
 
   }
 
+  // for handling food type
+
+  const handleFoodType=(type)=>{
+    setFoodType(type)
+  }
 
   return (
     <div>
@@ -84,10 +101,21 @@ export default function Business() {
                         <label className="form-control w-full max-w-xs">
                           <div className="label">
                             <span className="label-text">Name Of The Food</span>
+                         
                           </div>
-                          <input name='name' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
                         </label>
-
+                        <input name='name' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        <label className="form-control w-full max-w-xs">
+                          <div className="label">
+                            <span className="label-text">Food Category</span>
+                          </div>                          
+                        </label>
+                        <select onChange={(e) => handleFoodType(e.target.value)} className='dropdown w-[full] border-2 border-black text-[2vh] lg:text-[2vh] px-[5vw]'>
+                          <option>Fast Food</option>
+                          <option>Sea Food</option>
+                          <option>Cusine</option>
+                          <option>Drinks</option>
+                        </select>
 
                         <label className="form-control w-full max-w-xs">
                           <div className="label">
@@ -106,6 +134,15 @@ export default function Business() {
                             className="textarea textarea-bordered textarea-lg w-full max-w-xs"></textarea>
                         </label>
 
+                        <label className="form-control w-full max-w-xs">
+                          <div className="label">
+                            <span className="label-text">Image url</span>
+                          </div>
+                          <input name='url' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
+                        </label>
+                        <div className="text-[2vh] text-center pt-[2vh]">
+                          <p>or</p>
+                        </div>
                       </div>
 
                       <div className="">
@@ -114,7 +151,7 @@ export default function Business() {
                       </div>
                     </div>
 
-                    {/* for finalizing the buttons */}
+                    {/* for finalizing the form (submit button) */}
 
                     <div className="w-full text-center mt-4">
                       <button className='btn btn-primary'>Add Food</button>

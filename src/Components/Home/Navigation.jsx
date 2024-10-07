@@ -56,7 +56,7 @@ export default function Navigation() {
                         <li className='ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer flex justify-center items-center gap-2'><CiShoppingCart></CiShoppingCart> Cart</li>
                         <Link to='/profile/dashboard'><li className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${user?'block':'hidden'}`}><span className='flex justify-center items-center gap-2'><CgProfile></CgProfile> Profile</span></li></Link>
                         <Link to='/login'><li className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${user?'hidden':'block'}`}>Login</li></Link>
-                        <li onClick={handleLogout} className={`ml-[2vw] py-2 px-4 rounded-lg cursor-pointer btn btn-primary ${user?'':'hidden'}`}>Logout</li>
+                        <li onClick={handleLogout} className={`ml-[2vw] py-2 px-4 rounded-lg cursor-pointer btn bg-yellow-400 ${user?'':'hidden'}`}>Logout</li>
                         
                     </ul>
                 </div>

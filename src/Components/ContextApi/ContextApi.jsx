@@ -15,9 +15,12 @@ const auth = getAuth(app)
 export default function ContextApi({ children }) {
 
   const [user, setUser] = useState(null)
+  // to get the current user data
   const [userData, setUserData] = useState(null)
-
-  // fetch the current user data from backend 
+  // to get all the food data
+  const [foodData,setFoodData]= useState(null)
+  // loading state
+  const [loading,setLoading]=useState(false)
 
 
 
@@ -31,8 +34,8 @@ export default function ContextApi({ children }) {
         fetch(`http://localhost:5000/user/${user?.email}`)
           .then(res => res.json())
           .then(data => setUserData(data[0]))
-        setUser(user)
         // ...
+        setUser(user)
       } else {
         // User is signed out
         // ...
@@ -40,12 +43,26 @@ export default function ContextApi({ children }) {
       }
     });
   }, [])
+
+
+  useEffect(()=>{
+
+    if(foodData==null){
+      setLoading(true)
+    }
+
+  fetch(`http://localhost:5000/foods`)
+    .then(res => res.json())
+    .then(data => setFoodData(data))
+   
+    setLoading(false)
+
+  },[loading])
  
-  console.log(userData)
 
 
+  console.log(foodData)
 
-  console.log(user?.email)
 
   const authInfo = {
     user,
@@ -53,6 +70,7 @@ export default function ContextApi({ children }) {
     userData,
     setUser,
     setUserData,
+    foodData
   }
   return (
     <AuthContext.Provider value={authInfo}>

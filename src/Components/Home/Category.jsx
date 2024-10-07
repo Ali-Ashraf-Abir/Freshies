@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import FoodCard from '../FoodCard/FoodCard'
+import { AuthContext } from '../ContextApi/ContextApi'
 
 export default function Category() {
 
 
     const [active,setActive]=useState('FastFood')
 
+    const {foodData}=useContext(AuthContext)
     const activeCss='underline font-bold text-yellow-400 pointer'
 
     const handleActive=(current)=>{
@@ -13,7 +16,7 @@ export default function Category() {
 
 
     }
-
+    console.log(foodData)
 
 
   return (
@@ -35,6 +38,10 @@ export default function Category() {
             <div onClick={()=>handleActive('Drinks')} className={`${active=='Drinks'?activeCss:''} cursor-pointer`}>
                 <p>Drinks</p>
             </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 mt-4">
+            {foodData?.map(food=><FoodCard food={food}></FoodCard>)}
         </div>
 
 
