@@ -16,6 +16,7 @@ import Dashboard from './Components/Profile/Dashboard.jsx';
 import Account from './Components/Profile/Account.jsx';
 import Security from './Components/Profile/Security.jsx';
 import Business from './Components/Profile/Business.jsx';
+import MyItems from './Components/Profile/MyItems.jsx';
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,12 @@ const router = createBrowserRouter([
         {
           path:'/profile/business',
           element:<Business></Business>
+        },
+        {
+          path:'/profile/myitems',
+          element:<MyItems></MyItems>
         }
+
       ],
        
       },

@@ -22,6 +22,9 @@ export default function ContextApi({ children }) {
   // loading state
   const [loading,setLoading]=useState(false)
 
+  // action state
+  const [action,setAction]=useState(false)
+
 
 
   // to check the current user data if he is logged in or not
@@ -56,8 +59,9 @@ export default function ContextApi({ children }) {
     .then(data => setFoodData(data))
    
     setLoading(false)
+    setAction(false)
 
-  },[loading])
+  },[loading,action])
  
 
 
@@ -70,7 +74,11 @@ export default function ContextApi({ children }) {
     userData,
     setUser,
     setUserData,
-    foodData
+    foodData,
+    loading,
+    setLoading,
+    action,
+    setAction
   }
   return (
     <AuthContext.Provider value={authInfo}>

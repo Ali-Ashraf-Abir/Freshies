@@ -14,7 +14,7 @@ export default function Banner() {
                                 A place where food brings joy right at your doorsteps!
                             </div>
 
-                            <div className="text-[3vh] text-yellow-400 border-2 rounded-lg  shadow py-4 px-3 mt-[2vh]">
+                            <div className="text-[3vh] text-green-400 border-2 rounded-lg  shadow py-4 px-3 mt-[2vh]">
                                Explore Now
                             </div>
                     </div>

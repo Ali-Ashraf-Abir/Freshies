@@ -1,4 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { AuthContext } from '../ContextApi/ContextApi'
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 
 export default function Business() {
 
@@ -10,6 +13,8 @@ export default function Business() {
   const [imageUrl, setImageUrl] = useState(null)
   // for managing food type
   const [foodType,setFoodType] = useState('Fast Food')
+
+  const {userData,action,setAction}=useContext(AuthContext)
 
   const handleSubmitFood = async (event) => {
 
@@ -41,22 +46,20 @@ export default function Business() {
 
     const type=foodType
     const foodData = {
-      foodName, foodPrice, foodDescription, imageUrl,type
+      foodName, foodPrice, foodDescription, imageUrl,type,restaurant:userData?.businessName
     }
     // for uploading data to backend server
-    await fetch('http://localhost:5000/addfood', {
+      fetch('http://localhost:5000/addfood', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(foodData),
     })
-      .then(res => res.json())
-      .then(data => {
-
-        setFoodImage(null)
-      })
-
-   
+    alert("food added!");
+    setFoodImage(null)
+    setAction(true)
     form.reset()
+    
+    
 
   }
 
@@ -81,7 +84,7 @@ export default function Business() {
       <div className="flex justify-around items-center mt-5 border-b-2 border-gray-200 pb-2 lg:w-[60vw] w-[100vw]">
         {/* section for total number of items and add more items button */}
         <div className="text-[2vh]">
-          Total Items: { } <span className='text-blue-400 underline'>See All</span>
+          Total Items: { } <span className='text-blue-400 underline'><Link to='/profile/myitems'>See All</Link></span>
         </div>
 
         <div className="">

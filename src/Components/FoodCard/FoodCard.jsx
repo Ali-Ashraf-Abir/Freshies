@@ -17,6 +17,7 @@ export default function FoodCard({food}) {
             </figure>
             <div className="card-body">
                 <h2 className="card-title">{food.foodName}</h2>
+                <p className='bg-gray-200 w-[25%] lg:w-[30%] text-center text-[1.7vh] font-bold'>{food.restaurant}</p>
                 <p>{food.foodDescription}</p>
                 <p className='bg-green-200 w-[25%] lg:w-[30%] text-center text-[2vh] font-bold'>{food.foodPrice} Taka</p>
 
