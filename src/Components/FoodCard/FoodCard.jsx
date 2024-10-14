@@ -10,7 +10,7 @@ export default function FoodCard({food}) {
         <div className='flex justify-center items-center font-nunito'>
             <div className="card bg-base-100 w-96 shadow-xl w-[full] ">
             <figure>
-                <img className=''
+                <img className='max-h-[350px]'
                     src={food.imageUrl
                     }
                     alt="Shoes" />
