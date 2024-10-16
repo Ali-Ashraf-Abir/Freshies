@@ -17,6 +17,7 @@ import Account from './Components/Profile/Account.jsx';
 import Security from './Components/Profile/Security.jsx';
 import Business from './Components/Profile/Business.jsx';
 import MyItems from './Components/Profile/MyItems.jsx';
+import Cart from './Components/Cart/Cart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element:<Register></Register>
+      },
+      {
+        path:'/cart',
+        element:<Cart></Cart>
       },
       // paths for dashboard
       {
@@ -59,7 +64,8 @@ const router = createBrowserRouter([
         {
           path:'/profile/myitems',
           element:<MyItems></MyItems>
-        }
+        },
+      
 
       ],
        

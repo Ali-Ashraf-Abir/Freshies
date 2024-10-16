@@ -129,7 +129,7 @@ export default function Business() {
 
                         <label className="form-control w-full max-w-xs">
                           <div className="label">
-                            <span className="label-text">Descrition</span>
+                            <span className="label-text">Description</span>
                           </div>
                           <textarea
                             name='description'

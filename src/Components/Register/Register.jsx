@@ -29,9 +29,12 @@ export default function Register() {
         const email = form.email.value.toLowerCase()
         const password = form.password.value
         const userName = form.userName.value
+        const userType = registrationType
+        const cart=[]
+
 
         const userData = {
-            email, password, userName
+            email, password, userName,userType,cart
         }
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
@@ -39,6 +42,16 @@ export default function Register() {
                 const user = userCredential.user;
                 setError(null)
                 // ...
+                
+                fetch('http://localhost:5000/owners', {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(userData),
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
             })
             .catch((error) => {
                 const errorCode = error.code;

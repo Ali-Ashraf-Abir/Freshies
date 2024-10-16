@@ -13,7 +13,7 @@ export default function Navigation() {
 
     const [active, setActive] = useState('home')
     const [navShow, setNavShow] = useState('hidden')
-    const { user, auth, setUser, setUserData } = useContext(AuthContext)
+    const { user, auth, setUser, setUserData,itemsAdded } = useContext(AuthContext)
     const activeCss = 'underline font-bold text-blue-400 pointer'
     // handles active navbar
     const handleActive = (current) => {
@@ -60,7 +60,7 @@ export default function Navigation() {
                         <Link to='/'><li onClick={() => handleActive('home')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${active=='home'?activeCss:''}`}>Home</li></Link>
                         <li onClick={() => handleActive('dishes')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${active=='dishes'?activeCss:''}`}>Dishes</li>
                         <li onClick={() => handleActive('about')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${active=='about'?activeCss:''}`}>About</li>
-                        <li onClick={() => handleActive('cart')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer flex justify-center items-center gap-2 ${active=='cart'?activeCss:''}`}><CiShoppingCart></CiShoppingCart> Cart</li>
+                        <Link to='/cart'>  <li onClick={() => handleActive('cart')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer flex justify-center items-center gap-2 ${active=='cart'?activeCss:''}`}><CiShoppingCart></CiShoppingCart> Cart {itemsAdded?<sup><div className="badge badge-primary bg-green-400 badge-xs text-black font-bold font-nunito">1</div></sup>:''}</li></Link>
                         <Link onClick={() => handleActive('profile')} to='/profile/dashboard'><li className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${user ? 'block' : 'hidden'} ${active=='profile'?activeCss:''}`}><span className='flex justify-center items-center gap-2'><CgProfile></CgProfile> Profile</span></li></Link>
                         <Link to='/login'><li className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${user ? 'hidden' : 'block'}`}>Login</li></Link>
                         <li onClick={handleLogout} className={`ml-[2vw] py-2 px-4 rounded-lg cursor-pointer btn bg-green-400 ${user ? '' : 'hidden'}`}>Logout</li>
@@ -81,7 +81,7 @@ export default function Navigation() {
                 <ul className='flex justify-around font-nunito items-center'>
                     <Link to='/'><li onClick={() => handleActive('home')} className={`ml-[2vw] ${active=='home'?activeCss:''}`}><IoIosHome></IoIosHome></li></Link>
                     <li onClick={() => handleActive('dishes')} className={`ml-[2vw] ${active=='dishes'?activeCss:''}`}><MdFastfood /></li>
-                    <li onClick={() => handleActive('cart')} className={`ml-[2vw] flex justify-center items-center gap-2 ${active=='cart'?activeCss:''}`}><CiShoppingCart></CiShoppingCart></li>
+                    <Link to='/cart'><li onClick={() => handleActive('cart')} className={`ml-[2vw] flex justify-center items-center gap-2 ${active=='cart'?activeCss:''}`}><CiShoppingCart></CiShoppingCart> {itemsAdded?<sup><div className="badge badge-primary bg-green-400 badge-xs text-black font-bold font-nunito">1</div></sup>:''}</li></Link>
                     <Link onClick={() => handleActive('profile')} to='/profile/dashboard'><li className={`ml-[2vw] flex justify-center items-center gap-2 ${user ? 'block' : 'hidden'} ${active=='profile'?activeCss:''}`}><CgProfile></CgProfile></li></Link>
                     <Link to='/login'><li className={`ml-[2vw]  ${user ? 'hidden' : 'block'}`}>Login</li></Link>
                     <li onClick={handleLogout} className={`ml-[3vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer btn btn-ghost text-[1.2vh] lg:text-[1.5vh] border-2 border-gray-200 ${user ? '' : 'hidden'} text-green-400`}>Logout <FiLogOut></FiLogOut></li>

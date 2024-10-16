@@ -24,6 +24,8 @@ export default function ContextApi({ children }) {
 
   // action state
   const [action,setAction]=useState(false)
+  //items added notification
+  const [itemsAdded,setItemsAdded]=useState(false)
 
 
 
@@ -78,7 +80,9 @@ export default function ContextApi({ children }) {
     loading,
     setLoading,
     action,
-    setAction
+    setAction,
+    itemsAdded,
+    setItemsAdded
   }
   return (
     <AuthContext.Provider value={authInfo}>
