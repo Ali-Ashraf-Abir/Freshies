@@ -4,7 +4,7 @@ import { AuthContext } from '../ContextApi/ContextApi'
 export default function FoodCard({ food }) {
 
 
-    const { userData,setItemsAdded } = useContext(AuthContext)
+    const { userData,setItemsAdded,setAction } = useContext(AuthContext)
     const [value, setValue] = useState(1);  // Default value is 50
     const [price,setPrice]=useState()
 
@@ -23,19 +23,20 @@ export default function FoodCard({ food }) {
 
 
     // for putting items into user food cart
-    const handleFoodCartOrder = (id) => {
+    const handleFoodCartOrder = (_id) => {
 
 
         const foodData = {
-            foodName: food?.foodName, foodPrice: totalPrice, quantity: value, userId: userData?._id,restaurant:food?.restaurant,status:'pending'
+            foodName: food?.foodName, foodPrice: totalPrice, quantity: value, userId: userData?._id,restaurant:food?.restaurant,status:'pending',foodId:_id
         }
-        fetch(`http://localhost:5000/cart/${id}`, {
+        fetch(`http://localhost:5000/cart/${_id}`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(foodData),
         })
         alert('food ordered check cart!')
         setItemsAdded(true)
+        setAction(true)
 
     }
     const handlePriceInit=(price)=>{
@@ -80,7 +81,7 @@ export default function FoodCard({ food }) {
                                 
                                 <p>Current Value: {value}</p>
                                 <p>Total Price: {totalPrice} Taka</p>
-                                <button onClick={handleFoodCartOrder} className='btn bg-yellow-400'>Order Now</button>
+                                <button onClick={()=>handleFoodCartOrder(food._id)} className='btn bg-yellow-400'>Order Now</button>
                             </div>
                         </dialog>
                     </div>

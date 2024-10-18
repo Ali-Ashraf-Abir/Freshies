@@ -47,7 +47,7 @@ export default function ContextApi({ children }) {
         setUser(null)
       }
     });
-  }, [])
+  }, [action])
 
 
   useEffect(()=>{
