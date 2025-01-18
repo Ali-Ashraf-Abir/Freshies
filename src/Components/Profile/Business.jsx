@@ -12,9 +12,14 @@ export default function Business() {
   // for url image update
   const [imageUrl, setImageUrl] = useState(null)
   // for managing food type
-  const [foodType,setFoodType] = useState('Fast Food')
+  const [foodType, setFoodType] = useState('Fast Food')
+  // for handling status
+  const [status,setStatus]= useState('')
 
-  const {userData,action,setAction}=useContext(AuthContext)
+  const { userData, action, setAction } = useContext(AuthContext)
+
+
+
 
   const handleSubmitFood = async (event) => {
 
@@ -44,12 +49,12 @@ export default function Business() {
     let imageUrl = null
     { imageData ? imageUrl = foodImage : imageUrl = url }
 
-    const type=foodType
+    const type = foodType
     const foodData = {
-      foodName, foodPrice, foodDescription, imageUrl,type,restaurant:userData?.businessName
+      foodName, foodPrice, foodDescription, imageUrl, type, restaurant: userData?.businessName
     }
     // for uploading data to backend server
-      fetch('http://localhost:5000/addfood', {
+    fetch('http://localhost:5000/addfood', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(foodData),
@@ -58,10 +63,11 @@ export default function Business() {
     setFoodImage(null)
     setAction(true)
     form.reset()
-    
-    
+
+
 
   }
+
 
   // to get the image url from the computer
   const handleImageUpload = (event) => {
@@ -75,8 +81,31 @@ export default function Business() {
 
   // for handling food type
 
-  const handleFoodType=(type)=>{
+  const handleFoodType = (type) => {
     setFoodType(type)
+  }
+
+  // for handling food status
+
+  const handleStatus=(status,order)=>{
+    setStatus(status)
+
+    const statusBody={status,order}
+
+    fetch('http://localhost:5000/statusUpdate', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(statusBody),
+    })
+    .then(res=>res.json())
+    .then(data=>data)
+
+
+    setInterval(() => {
+      setAction(true)
+    }, 1500);
+
+
   }
 
   return (
@@ -104,18 +133,18 @@ export default function Business() {
                         <label className="form-control w-full max-w-xs">
                           <div className="label">
                             <span className="label-text">Name Of The Food</span>
-                         
+
                           </div>
                         </label>
                         <input name='name' type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" />
                         <label className="form-control w-full max-w-xs">
                           <div className="label">
                             <span className="label-text">Food Category</span>
-                          </div>                          
+                          </div>
                         </label>
                         <select onChange={(e) => handleFoodType(e.target.value)} className='dropdown w-[full] border-2 border-black text-[2vh] lg:text-[2vh] px-[5vw]'>
                           <option>Fast Food</option>
-                          <option>Sea Food</option>
+                          <option >Sea Food</option>
                           <option>Cusine</option>
                           <option>Drinks</option>
                         </select>
@@ -183,8 +212,69 @@ export default function Business() {
       </div>
 
       <div className="">
-        <div className="lg:w-[80%] w-[100vw] text-center mt-4 text-[3vh] lg:text-[3vh]">
+        <div className="lg:w-[80%] w-[100vw] text-center mt-4 text-[3vh] lg:text-[4vh]">
           Orders
+        </div>
+        <div className="flex flex-col justify-center items-center mt-[3vh]">
+
+          <div className='flex justify-between items-center gap-4 w-[90%] mt-[2vh]'>
+            <div className=" ">
+              <img className='w-[10vw]' src='' alt="" />
+            </div>
+            <div className="text-[2.5vh] underline font-semibold text-nunito">
+              Food Name
+            </div>
+
+            <div className="text-[2.5vh] underline font-semibold text-nunito">
+              Quantity
+            </div>
+
+            <div className="text-[2.5vh] underline font-semibold text-nunito">
+              Status
+            </div>
+
+
+          </div>
+
+          {
+            userData?.orders?.map(order => <div className='flex justify-between items-center gap-4 w-[90%] mt-[2vh]'>
+              <div className=" ">
+                <img className='w-[10vw]' src={order.imageUrl} alt="" />
+              </div>
+              <div className="">
+                {order.foodName}
+              </div>
+
+              <div className="">
+                {order.quantity}
+              </div>
+
+              <div className="">
+                {/* You can open the modal using document.getElementById('ID').showModal() method */}
+                <button className={`btn ${order.status == 'pending' ? 'bg-yellow-400' : order.status == 'preparing' ? 'bg-yellow-200' : order.status == 'out for delivery' ? 'bg-green-200' : order.status == 'delivered' ? 'bg-green-800' : ''}`} onClick={() => document.getElementById(order.UID).showModal()}>{order.status}</button>
+                <dialog id={order.UID} className="modal">
+                  <div className="modal-box">
+                    <form method="dialog">
+                      {/* if there is a button in form, it will close the modal */}
+                      <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                    </form>
+                    <h3 className="font-bold text-lg">Please Update The New Status!</h3>
+                    <select onChange={(e) => handleStatus(e.target.value,order)} className='dropdown border-2 border-black text-[2vh] lg:text-[2vh] mt-[2vh]'>
+                      <option>pending</option>
+                      <option>preparing</option>
+                      <option>out for delivery</option>
+                      <option>delivered</option>
+                    </select>
+
+                  </div>
+                </dialog>
+              </div>
+
+
+            </div>)
+          }
+
+
         </div>
 
       </div>

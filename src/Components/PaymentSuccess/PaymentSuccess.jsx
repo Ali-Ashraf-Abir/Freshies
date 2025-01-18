@@ -5,45 +5,39 @@ import { AuthContext } from '../ContextApi/ContextApi';
 const PaymentSuccess = () => {
   const navigate = useNavigate();
 
-  const {userData}=useContext(AuthContext)
-
-    useEffect(() => {
-        // Redirect to home after 2 seconds
-
-            const timer = setTimeout(() => {
-                navigate('/'); // Change to your home route
-              }, 2000);
-          
-              // Cleanup timer on component unmount
-              return () => clearTimeout(timer);
-        
-      }, [navigate]);
+  const { userData } = useContext(AuthContext)
 
 
 
 
-      
-    useEffect(()=>{
-        if(userData){
-        const unpaidProducts=userData?.cart?.filter(cart=>cart.status!='paid')
-        const body = {
-            products: unpaidProducts,
-            userData: userData
-        }
-        
-        fetch(`http://localhost:5000/paid`, {
-            method: 'POST',
-            headers: { 'content-type': 'application/json' },
-            body: JSON.stringify(body)
-        })
-        console.log(userData)
-        }
-      },[userData])
-  
+
+
+
+  const handlePaid = () => {
+    if (userData) {
+      const unpaidProducts = userData?.cart?.filter(cart => cart.status != 'paid')
+      const body = {
+        products: unpaidProducts,
+        userData: userData,
+        restaurant: unpaidProducts.restaurant
+      }
+
+      fetch(`http://localhost:5000/paid`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(body)
+      })
+      console.log(unpaidProducts)
+    }
+    navigate('/')
+
+  }
+
   return (
     <div style={styles.container}>
       <h1 style={styles.successMessage}>Payment Successful!</h1>
       <p style={styles.infoMessage}>Thank you for your purchase.</p>
+      <p onClick={handlePaid} className='btn btn-primary' style={styles.infoMessage}>Continue Browsing</p>
     </div>
   );
 };

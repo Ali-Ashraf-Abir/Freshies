@@ -51,7 +51,7 @@ export default function Navigation() {
         <div className="Navigation">
 
             {/* main navigation */}
-            <div className="navigation-items flex justify-between text-[2vh] items-center w-full px-[10vw] py-5  shadow border-b-2">
+            <div className="navigation-items flex justify-between text-[2vh] items-center w-full px-[10vw] py-5  shadow border-b-2 max-w-[1920px] mx-auto">
 
                 <div className="text-[3vh] font-playWrite">Freshies</div>
 

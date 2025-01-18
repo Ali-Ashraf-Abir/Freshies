@@ -32,7 +32,7 @@ export default function Cart() {
             if (item.status === 'paid') {
                 return sum; // Skip paid items
             }
-            return sum + (item.foodPrice * (item.quantity || 0)); // Add price of unpaid items
+            return sum + (item.foodPrice * (1 || 0)); // Add price of unpaid items
         }, 0); // Start with an initial sum of 0
 
         setBill(totalFoodPrice || 0); // Ensure that bill is always a number
@@ -84,7 +84,7 @@ export default function Cart() {
                     <div className="">{item.foodPrice} Taka</div>
 
                     <div className="badge badge-primary">{item.status}</div>
-                    <div onClick={() => handleCartDelete(item.foodName, item)} className="bg-yellow-200 text-center lg:w-[40%] py-4 rounded-lg">Cancel</div>
+                    <div onClick={() => handleCartDelete(item.foodName, item)} className="bg-yellow-200 text-center lg:w-[40%] py-4 rounded-lg cursor-pointer">Cancel</div>
 
 
 

@@ -27,7 +27,8 @@ export default function FoodCard({ food }) {
 
 
         const foodData = {
-            foodName: food?.foodName, foodPrice: totalPrice, quantity: value, userId: userData?._id,restaurant:food?.restaurant,status:'pending',foodId:_id
+            foodName: food?.foodName, foodPrice:totalPrice, quantity: value, userId: userData?._id,restaurant:food?.restaurant,status:'pending',foodId:_id,imageUrl:food?.imageUrl,
+            UID:null
         }
         fetch(`http://localhost:5000/cart/${_id}`, {
             method: 'POST',
@@ -60,7 +61,7 @@ export default function FoodCard({ food }) {
 
                     <div className="card-actions justify-end">
                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn" onClick={() => {document.getElementById(food?._id).showModal(); handlePriceInit(food.foodPrice)}}>open modal</button>
+                        <button className="btn" onClick={() => {document.getElementById(food?._id).showModal(); handlePriceInit(food.foodPrice)}}>Add To Cart</button>
                         <dialog id={food?._id} className="modal">
                             <div className="modal-box">
                                 <form method="dialog">

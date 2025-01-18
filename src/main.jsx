@@ -20,6 +20,7 @@ import MyItems from './Components/Profile/MyItems.jsx';
 import Cart from './Components/Cart/Cart.jsx';
 import CustomerOrderDetails from './Components/CustomerOrderDetails/CustomerOrderDetails.jsx';
 import PaymentSuccess from './Components/PaymentSuccess/PaymentSuccess.jsx';
+import MyOrders from './Components/Profile/MyOrders.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,10 +47,7 @@ const router = createBrowserRouter([
         path:'/cart/orderdetails',
         element:<CustomerOrderDetails></CustomerOrderDetails>
       },
-      {
-        path:'/payment/success',
-        element:<PaymentSuccess></PaymentSuccess>
-      },
+  
       // paths for dashboard
       {
         path: "/profile",
@@ -75,14 +73,22 @@ const router = createBrowserRouter([
           path:'/profile/myitems',
           element:<MyItems></MyItems>
         },
+        {
+          path:'/profile/orders',
+          element:<MyOrders></MyOrders>
+        }
   
       
 
       ],
-       
+
       },
 
     ]
+  },
+  {
+    path:'/payment/success',
+    element:<PaymentSuccess></PaymentSuccess>
   },
 ]);
 

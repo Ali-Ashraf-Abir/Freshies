@@ -13,7 +13,7 @@ export default function Profile() {
 
     return (
         <div>
-            <div className="flex flex-col gap-4 items-center justify-center lg:grid grid-cols-4 font-nunito">
+            <div className="flex flex-col gap-4 items-start justify-center lg:grid grid-cols-4 font-nunito">
                 <div className="">
                     <div className="drawer hidden lg:block lg:drawer-open">
                         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
@@ -33,8 +33,8 @@ export default function Profile() {
                                 <Link to='/profile/dashboard'> <span onClick={() => handleActive('dashboard')} className={`h-full font-semibold p-2 ${currentActive == 'dashboard' ? 'text-yellow-400 underline' : ''}`}>Dashboard</span></Link>
                         <Link to='/profile/security'><span onClick={() => handleActive('security')} className={` h-full font-semibold p-2 ${currentActive == 'security' ? 'text-yellow-400 underline' : ''}`}>Security</span></Link>
                         <Link to='/profile/account'><span onClick={() => handleActive('account')} className={`h-full font-semibold p-2 ${currentActive == 'account' ? 'text-yellow-400 underline' : ''}`}>Account</span></Link>
-                        <Link to='/profile/business'><span onClick={() => handleActive('business')} className={` h-full font-semibold p-2 ${currentActive == 'business' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Customer'?'block':'hidden'}`}>My Orders</span></Link>
-                        <Link to='/profile/myitems'><span onClick={() => handleActive('myitems')} className={` h-full font-semibold p-2 ${currentActive == 'myitems' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Restaurant Owner'?'block':'hidden'}`}>Items</span></Link>
+                        <Link to='/profile/orders'><span onClick={() => handleActive('business')} className={` h-full font-semibold p-2 ${currentActive == 'business' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Customer'?'block':'hidden'}`}>My Orders</span></Link>
+                        <Link to='/profile/myitems'><span onClick={() => handleActive('myitems')} className={` h-full font-semibold p-2 ${currentActive == 'myitems' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Restaurant Owner'?'block':'hidden'}`}>My Items</span></Link>
                         <Link to='/profile/business'><span onClick={() => handleActive('business')} className={` h-full font-semibold p-2 ${currentActive == 'business' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Restaurant Owner'?'block':'hidden'}`}>Business</span></Link>
 
                             </ul>
@@ -45,8 +45,8 @@ export default function Profile() {
                        <Link to='/profile/dashboard'> <span onClick={() => handleActive('dashboard')} className={`border-r-2 border-gray-200 h-full font-semibold p-2 ${currentActive == 'dashboard' ? 'text-yellow-400 underline' : ''}`}>Dashboard</span></Link>
                         <Link to='/profile/security'><span onClick={() => handleActive('security')} className={`border-r-2 border-gray-200 h-full font-semibold p-2 ${currentActive == 'security' ? 'text-yellow-400 underline' : ''}`}>Security</span></Link>
                         <Link to='/profile/account'><span onClick={() => handleActive('account')} className={`border-r-2 border-gray-200 h-full font-semibold p-2 ${currentActive == 'account' ? 'text-yellow-400 underline' : ''}`}>Account</span></Link>
-                        <Link to='/profile/business'><span onClick={() => handleActive('business')} className={` h-full font-semibold p-2 ${currentActive == 'business' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Customer'?'block':'hidden'}`}>My Orders</span></Link>
-                        <Link to='/profile/myitems'><span onClick={() => handleActive('myitems')} className={`border-r-2 border-gray-200 h-full font-semibold p-2 ${currentActive == 'myitems' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Restaurant Owner'?'block':'hidden'}`}>Items</span></Link>
+                        <Link to='/profile/orders'><span onClick={() => handleActive('business')} className={` h-full font-semibold p-2 ${currentActive == 'business' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Customer'?'block':'hidden'}`}>My Orders</span></Link>
+                        <Link to='/profile/myitems'><span onClick={() => handleActive('myitems')} className={`border-r-2 border-gray-200 h-full font-semibold p-2 ${currentActive == 'myitems' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Restaurant Owner'?'block':'hidden'}`}>My Items</span></Link>
                         <Link to='/profile/business'><span onClick={() => handleActive('business')} className={` h-full font-semibold p-2 ${currentActive == 'business' ? 'text-yellow-400 underline' : ''} ${userData?.userType=='Restaurant Owner'?'block':'hidden'}`}>Business</span></Link>
                     
                     </div>

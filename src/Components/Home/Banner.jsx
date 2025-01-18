@@ -3,7 +3,7 @@ import React from 'react'
 export default function Banner() {
   return (
         <div className="">
-            <div className="relative">
+            <div className="relative max-w-[1920px] mx-auto">
         
             <div className="w-[100%] h-[80vh] bg-fit text-center bg-[url('https://images.unsplash.com/photo-1546724867-3b2dabdbc5b0?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')]">
                     <div className="w-[100%] h-[80vh] bg-[rgb(0,0,0,0.5)] flex flex-col justify-center items-center gap-2">
