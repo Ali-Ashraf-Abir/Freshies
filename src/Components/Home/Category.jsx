@@ -45,9 +45,11 @@ export default function Category() {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-5 mt-4 max-w-[1920px] mx-auto">
-                {foodData?.filter(food => food.type == active).map(food => <FoodCard food={food}></FoodCard>)}
+                {foodData?.filter(food => food.type == active).slice(0,8).map(food => <FoodCard food={food}></FoodCard>)}
             </div>
-
+            <div className="flex justify-center items-center mt-[2vh]">
+                <button className='text-center btn bg-yellow-400 '>see more food</button>
+            </div>
 
 
         </div>

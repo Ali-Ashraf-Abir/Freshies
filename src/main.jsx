@@ -21,6 +21,7 @@ import Cart from './Components/Cart/Cart.jsx';
 import CustomerOrderDetails from './Components/CustomerOrderDetails/CustomerOrderDetails.jsx';
 import PaymentSuccess from './Components/PaymentSuccess/PaymentSuccess.jsx';
 import MyOrders from './Components/Profile/MyOrders.jsx';
+import FoodList from './Components/Dishes/FoodList.jsx';
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
       {
         path:'/cart/orderdetails',
         element:<CustomerOrderDetails></CustomerOrderDetails>
+      },
+      {
+        path:'/food list',
+        element:<FoodList></FoodList>
       },
   
       // paths for dashboard

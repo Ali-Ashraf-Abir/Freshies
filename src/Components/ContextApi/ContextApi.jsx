@@ -65,7 +65,7 @@ export default function ContextApi({ children }) {
     setAction(false)
 
   },[loading,action])
- 
+ console.log(foodData)
   useEffect(()=>{
 
     fetch(`http://localhost:5000/restaurants`)

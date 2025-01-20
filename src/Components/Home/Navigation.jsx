@@ -57,10 +57,10 @@ export default function Navigation() {
                 <div className="hidden lg:block">
                     <ul className='flex justify-end font-nunito'>
                         <Link to='/'><li onClick={() => handleActive('home')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${active=='home'?activeCss:''}`}>Home</li></Link>
-                        <li onClick={() => handleActive('dishes')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${active=='dishes'?activeCss:''}`}>Dishes</li>
+                        <Link to='/food list' onClick={() => handleActive('Food List')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${active=='Food List'?activeCss:''}`}>Food List</Link>
                         <li onClick={() => handleActive('about')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${active=='about'?activeCss:''}`}>About</li>
                         <Link to='/cart'>  <li onClick={() => handleActive('cart')} className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer flex justify-center items-center gap-2 ${active=='cart'?activeCss:''}`}><CiShoppingCart></CiShoppingCart> Cart {itemsAdded?<sup><div className="badge badge-primary bg-green-400 badge-xs text-black font-bold font-nunito">1</div></sup>:''}</li></Link>
-                        <Link onClick={() => handleActive('profile')} to='/profile/dashboard'><li className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${user ? 'block' : 'hidden'} ${active=='profile'?activeCss:''}`}><span className='flex justify-center items-center gap-2'><CgProfile></CgProfile> Profile</span></li></Link>
+                        <Link onClick={() => handleActive('profile')} to='/profile/account'><li className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${user ? 'block' : 'hidden'} ${active=='profile'?activeCss:''}`}><span className='flex justify-center items-center gap-2'><CgProfile></CgProfile> Profile</span></li></Link>
                         <Link to='/login'><li className={`ml-[2vw] hover:bg-gray-200 py-2 px-4 rounded-lg cursor-pointer ${user ? 'hidden' : 'block'}`}>Login</li></Link>
                         <li onClick={handleLogout} className={`ml-[2vw] py-2 px-4 rounded-lg cursor-pointer btn bg-green-400 ${user ? '' : 'hidden'}`}>Logout</li>
 
@@ -79,7 +79,7 @@ export default function Navigation() {
             <div className={`text-[5vw] ${navShow} block lg:hidden p-4 border-b-4`}>
                 <ul className='flex justify-around font-nunito items-center'>
                     <Link to='/'><li onClick={() => handleActive('home')} className={`ml-[2vw] ${active=='home'?activeCss:''}`}><IoIosHome></IoIosHome></li></Link>
-                    <li onClick={() => handleActive('dishes')} className={`ml-[2vw] ${active=='dishes'?activeCss:''}`}><MdFastfood /></li>
+                    <Link to='/food list' onClick={() => handleActive('Food List')} className={`ml-[2vw] ${active=='Food List'?activeCss:''}`}><MdFastfood /></Link>
                     <Link to='/cart'><li onClick={() => handleActive('cart')} className={`ml-[2vw] flex justify-center items-center gap-2 ${active=='cart'?activeCss:''}`}><CiShoppingCart></CiShoppingCart> {itemsAdded?<sup><div className="badge badge-primary bg-green-400 badge-xs text-black font-bold font-nunito">1</div></sup>:''}</li></Link>
                     <Link onClick={() => handleActive('profile')} to='/profile/dashboard'><li className={`ml-[2vw] flex justify-center items-center gap-2 ${user ? 'block' : 'hidden'} ${active=='profile'?activeCss:''}`}><CgProfile></CgProfile></li></Link>
                     <Link to='/login'><li className={`ml-[2vw]  ${user ? 'hidden' : 'block'}`}>Login</li></Link>

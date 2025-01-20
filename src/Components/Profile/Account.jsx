@@ -36,7 +36,7 @@ export default function Account() {
             <div className="text-[3vh] lg:text-[5vh] text-center h-full font-semibold ">
                 Account Information
                 <div className="w-[20vh] h-[20vh] mx-auto lg:mx-0 mt-4 flex">
-                    <img className='rounded-lg ' src={userData.image==null?"https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Download-Image.png":userData.image} alt="" /> <div className="ml-2 text-[3vh] cursor-pointer">
+                    <img className='rounded-lg ' src={userData?.image==null?"https://www.pngarts.com/files/10/Default-Profile-Picture-PNG-Download-Image.png":userData?.image} alt="" /> <div className="ml-2 text-[3vh] cursor-pointer">
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                         <button className="btn" onClick={() => document.getElementById(userData?._id).showModal()}><CiEdit></CiEdit></button>
                         <dialog id={userData?._id} className="modal">
