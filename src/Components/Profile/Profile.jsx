@@ -4,7 +4,7 @@ import { Link, Outlet } from 'react-router-dom'
 
 export default function Profile() {
 
-    const { userData } = useContext(AuthContext)
+    const { userData } = useContext(AuthContext) || {}
     const [currentActive, setActive] = useState('dashboard')
 
     const handleActive = (active) => {

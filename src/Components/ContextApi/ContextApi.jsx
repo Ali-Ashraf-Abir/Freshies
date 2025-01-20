@@ -1,6 +1,7 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth/cordova'
 import React, { createContext, useEffect, useState } from 'react'
 import app from '../Friebase/Firebase.ini'
+import RestaurantList from '../Home/RestaurantList'
 
 
 
@@ -27,7 +28,7 @@ export default function ContextApi({ children }) {
   //items added notification
   const [itemsAdded,setItemsAdded]=useState(false)
 
-
+ const [restaurantList,setRestaurantsList]=useState(null)
 
   // to check the current user data if he is logged in or not
   useEffect(() => {
@@ -65,9 +66,15 @@ export default function ContextApi({ children }) {
 
   },[loading,action])
  
+  useEffect(()=>{
 
+    fetch(`http://localhost:5000/restaurants`)
+    .then(res => res.json())
+    .then(data => setRestaurantsList(data))
 
-  console.log(foodData)
+  },[])
+
+  console.log(restaurantList)
 
 
   const authInfo = {
@@ -82,7 +89,8 @@ export default function ContextApi({ children }) {
     action,
     setAction,
     itemsAdded,
-    setItemsAdded
+    setItemsAdded,
+    restaurantList
   }
   return (
     <AuthContext.Provider value={authInfo}>

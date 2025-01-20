@@ -4,7 +4,7 @@ import { AuthContext } from '../ContextApi/ContextApi'
 export default function FoodCard({ food }) {
 
 
-    const { userData,setItemsAdded,setAction } = useContext(AuthContext)
+    const { userData,setItemsAdded,setAction } = useContext(AuthContext) || {}
     const [value, setValue] = useState(1);  // Default value is 50
     const [price,setPrice]=useState()
 

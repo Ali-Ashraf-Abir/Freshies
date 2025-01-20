@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 
 export default function MyItems() {
 
-    const { foodData, setLoading, userData, setAction } = useContext(AuthContext)
+    const { foodData, setLoading, userData, setAction } = useContext(AuthContext) || {}
     // contains the imagebb url that came after uploading in the fetch promise
     const [foodImage, setFoodImage] = useState(null)
     // contains the image data that the user has selected from his pc to send back in the image bb

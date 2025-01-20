@@ -13,13 +13,12 @@ export default function Navigation() {
 
     const [active, setActive] = useState('home')
     const [navShow, setNavShow] = useState('hidden')
-    const { user, auth, setUser, setUserData,itemsAdded } = useContext(AuthContext)
+    const { user, auth, setUser, setUserData,itemsAdded } = useContext(AuthContext) || {}
     const activeCss = 'underline font-bold text-blue-400 pointer'
     // handles active navbar
     const handleActive = (current) => {
 
         setActive(current)
-
 
     }
     // handles the navbar for mobile

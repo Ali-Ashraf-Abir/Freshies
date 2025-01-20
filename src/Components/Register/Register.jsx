@@ -5,7 +5,7 @@ import Swal from 'sweetalert2'
 
 export default function Register() {
 
-    const { user, auth } = useContext(AuthContext)
+    const { user, auth } = useContext(AuthContext) || {}
     const [error, setError] = useState(null)
     const [passError, setPassError] = useState(null)
     const [registrationType, setRegistrationType] = useState('Customer')
@@ -72,9 +72,10 @@ export default function Register() {
         const businessName = form.businessName.value
         const location = businessLocation
         const businessAddress = form.businessAddress.value
+        const image=form.image.value
         const userType = registrationType
         const userData = {
-            email, password, userName, businessAddress, location, businessName, userType
+            email, password, userName, businessAddress, location, businessName, userType,image
         }
 
         console.log(userData)
@@ -214,11 +215,17 @@ export default function Register() {
                         <label className="label">
                             <span className="label-text">Business Address</span>
                         </label>
+                        
                         <textarea name='businessAddress' className=' rounded-lg p-5 border-gray-200 border-2' placeholder='full address'></textarea>
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
                         <input name="email" type="email" placeholder="email" className="input input-bordered" required />
+
+                        <label className="label">
+                            <span className="label-text">Restaurant Image</span>
+                        </label>
+                        <input name="image" type="email" placeholder="Image url" className="input input-bordered" required />
 
                     </div>
                     <div className="form-control">

@@ -5,7 +5,7 @@ import { AuthContext } from '../ContextApi/ContextApi';
 const PaymentSuccess = () => {
   const navigate = useNavigate();
 
-  const { userData } = useContext(AuthContext)
+  const { userData } = useContext(AuthContext) || {}
 
 
 

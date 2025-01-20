@@ -3,7 +3,7 @@ import { AuthContext } from '../ContextApi/ContextApi'
 import { loadStripe } from '@stripe/stripe-js';
 export default function Cart() {
 
-    const { userData, setItemsAdded, setAction } = useContext(AuthContext)
+    const { userData, setItemsAdded, setAction } = useContext(AuthContext) || {}
 
     useEffect(() => {
         setItemsAdded(false)

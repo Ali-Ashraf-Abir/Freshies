@@ -6,7 +6,7 @@ export default function Category() {
 
     const [active, setActive] = useState('Fast Food')
 
-    const { foodData, loading, setLoading } = useContext(AuthContext)
+    const { foodData, loading, setLoading } = useContext(AuthContext) || {}
     const activeCss = 'underline font-bold text-blue-400 pointer'
 
     const handleActive = (current) => {

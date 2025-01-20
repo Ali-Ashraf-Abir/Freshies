@@ -6,7 +6,7 @@ import { signInWithEmailAndPassword } from 'firebase/auth/cordova'
 export default function Login() {
 
     const [error,setError]=useState(null)
-    const {auth}=useContext(AuthContext)
+    const {auth}=useContext(AuthContext) || {}
     const navigate=useNavigate()
     const handleLogin = (event) => {
 

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import { AuthContext } from '../ContextApi/ContextApi'
 
 export default function MyOrders() {
-    const { userData, loading } = useContext(AuthContext)
+    const { userData, loading } = useContext(AuthContext) || {}
     
 
 

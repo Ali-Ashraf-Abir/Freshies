@@ -3,6 +3,7 @@ import Banner from './Banner'
 import Category from './Category'
 import ContactDetails from './ContactDetails'
 import BestSellers from './BestSellers'
+import RestaurantList from './RestaurantList'
 
 export default function 
 
@@ -13,7 +14,9 @@ export default function
         <Category></Category>
 
         <BestSellers></BestSellers>
+        <RestaurantList></RestaurantList>
         <ContactDetails></ContactDetails>
+
 
     </div>
   )

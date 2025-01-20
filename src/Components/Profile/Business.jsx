@@ -16,7 +16,7 @@ export default function Business() {
   // for handling status
   const [status,setStatus]= useState('')
 
-  const { userData, action, setAction } = useContext(AuthContext)
+  const { userData, action, setAction } = useContext(AuthContext) || {}
 
 
 
