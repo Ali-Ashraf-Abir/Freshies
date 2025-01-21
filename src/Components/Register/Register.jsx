@@ -43,7 +43,7 @@ export default function Register() {
                 setError(null)
                 // ...
                 
-                fetch('http://localhost:5000/owners', {
+                fetch('https://freshies-server-aliashrafabirs-projects.vercel.app/owners', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userData),
@@ -87,7 +87,7 @@ export default function Register() {
                 setError(null)
                 // ...
 
-                fetch('http://localhost:5000/owners', {
+                fetch('https://freshies-server-aliashrafabirs-projects.vercel.app/owners', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userData),

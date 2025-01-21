@@ -37,7 +37,7 @@ export default function ContextApi({ children }) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
-        fetch(`http://localhost:5000/user/${user?.email}`)
+        fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/user/${user?.email}`)
           .then(res => res.json())
           .then(data => setUserData(data[0]))
         // ...
@@ -57,7 +57,7 @@ export default function ContextApi({ children }) {
       setLoading(true)
     }
 
-  fetch(`http://localhost:5000/foods`)
+  fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/foods`)
     .then(res => res.json())
     .then(data => setFoodData(data))
    
@@ -68,7 +68,7 @@ export default function ContextApi({ children }) {
  console.log(foodData)
   useEffect(()=>{
 
-    fetch(`http://localhost:5000/restaurants`)
+    fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/restaurants`)
     .then(res => res.json())
     .then(data => setRestaurantsList(data))
 

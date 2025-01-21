@@ -18,7 +18,7 @@ export default function Account() {
         }
 
 
-        fetch(`http://localhost:5000/addimage`, {
+        fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/addimage`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(body),

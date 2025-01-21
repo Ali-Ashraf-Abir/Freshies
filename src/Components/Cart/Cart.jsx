@@ -12,7 +12,7 @@ export default function Cart() {
     //  to handle the deleting mechanism of the cart
     const handleCartDelete = (_id, food) => {
 
-        fetch(`http://localhost:5000/cartDelete/${_id}`, {
+        fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/cartDelete/${_id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(food)
@@ -49,7 +49,7 @@ export default function Cart() {
             userData: userData
         }
 
-        fetch(`http://localhost:5000/checkOut`, {
+        fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/checkOut`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(body)
