@@ -22,7 +22,7 @@ const PaymentSuccess = () => {
         restaurant: unpaidProducts.restaurant
       }
 
-      fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/paid`, {
+      fetch(`https://freshies-server.vercel.app/paid`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify(body)

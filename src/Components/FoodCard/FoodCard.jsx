@@ -30,7 +30,7 @@ export default function FoodCard({ food }) {
             foodName: food?.foodName, foodPrice:totalPrice, quantity: value, userId: userData?._id,restaurant:food?.restaurant,status:'pending',foodId:_id,imageUrl:food?.imageUrl,
             UID:null
         }
-        fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/cart/${_id}`, {
+        fetch(`https://freshies-server.vercel.app/cart/${_id}`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(foodData),

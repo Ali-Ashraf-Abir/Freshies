@@ -55,7 +55,7 @@ export default function MyItems() {
         console.log(filteredFoodData)
 
 
-        fetch('https://freshies-server-aliashrafabirs-projects.vercel.app/editfood', {
+        fetch('https://freshies-server.vercel.app/editfood', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(filteredFoodData),
@@ -94,7 +94,7 @@ export default function MyItems() {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://freshies-server-aliashrafabirs-projects.vercel.app/foods/${id}`, {
+                fetch(`https://freshies-server.vercel.app/foods/${id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())

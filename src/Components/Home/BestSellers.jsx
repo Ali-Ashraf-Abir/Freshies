@@ -3,9 +3,9 @@ import React from "react";
 
 const BestSellers = () => {
   const bestSellers = [
-    { id: 1, name: "Margherita Pizza", price: "$12.99", image: "https://th.bing.com/th/id/OIP.GUtzz3zgkImN3_ikBYuNfgHaE8?rs=1&pid=ImgDetMain" },
-    { id: 2, name: "Cheeseburger", price: "$9.99", image: "https://img.freepik.com/premium-photo/hamburger-with-cheese-cheese-it_745528-13032.jpg" },
-    { id: 3, name: "Sushi Platter", price: "$19.99", image: "https://animalgourmet.com/wp-content/uploads/2019/05/sushi-354628_1920.jpg" },
+    { id: 1, name: "Margherita Pizza", price: "120 Taka", image: "https://th.bing.com/th/id/OIP.GUtzz3zgkImN3_ikBYuNfgHaE8?rs=1&pid=ImgDetMain" },
+    { id: 2, name: "Cheeseburger", price: "180 Taka", image: "https://img.freepik.com/premium-photo/hamburger-with-cheese-cheese-it_745528-13032.jpg" },
+    { id: 3, name: "Sushi Platter", price: "280 Taka", image: "https://animalgourmet.com/wp-content/uploads/2019/05/sushi-354628_1920.jpg" },
   ];
 
   return (

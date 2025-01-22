@@ -54,7 +54,7 @@ export default function Business() {
       foodName, foodPrice, foodDescription, imageUrl, type, restaurant: userData?.businessName
     }
     // for uploading data to backend server
-    fetch('https://freshies-server-aliashrafabirs-projects.vercel.app/addfood', {
+    fetch('https://freshies-server.vercel.app/addfood', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(foodData),
@@ -92,7 +92,7 @@ export default function Business() {
 
     const statusBody={status,order}
 
-    fetch('https://freshies-server-aliashrafabirs-projects.vercel.app/statusUpdate', {
+    fetch('https://freshies-server.vercel.app/statusUpdate', {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(statusBody),

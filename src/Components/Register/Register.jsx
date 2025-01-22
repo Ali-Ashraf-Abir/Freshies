@@ -43,7 +43,7 @@ export default function Register() {
                 setError(null)
                 // ...
                 
-                fetch('https://freshies-server-aliashrafabirs-projects.vercel.app/owners', {
+                fetch('https://freshies-server.vercel.app/owners', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userData),
@@ -87,7 +87,7 @@ export default function Register() {
                 setError(null)
                 // ...
 
-                fetch('https://freshies-server-aliashrafabirs-projects.vercel.app/owners', {
+                fetch('https://freshies-server.vercel.app/owners', {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(userData),
@@ -225,7 +225,7 @@ export default function Register() {
                         <label className="label">
                             <span className="label-text">Restaurant Image</span>
                         </label>
-                        <input name="image" type="email" placeholder="Image url" className="input input-bordered" required />
+                        <input name="image" type="text" placeholder="Image url" className="input input-bordered" required />
 
                     </div>
                     <div className="form-control">
